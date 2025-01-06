@@ -10,8 +10,8 @@ export const calculateValues = (data, baseCurrency, startDate, endDate, amount) 
     return { startValues: null, endValues: null };
   }
 
-  const startRate = baseCurrency === "TRY" ? 1 : startData.USDTRY;
-  const endRate = baseCurrency === "TRY" ? 1 : endData.USDTRY;
+  // const startRate = baseCurrency === "TRY" ? 1 : startData.USDTRY;
+  // const endRate = baseCurrency === "TRY" ? 1 : endData.USDTRY;
 
   const startTRY = baseCurrency === "TRY" ? amount : amount * startData.USDTRY;
   const endTRY = baseCurrency === "TRY"
