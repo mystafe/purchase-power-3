@@ -1,100 +1,106 @@
 import React from "react";
+import { calculateValues } from "../utils/calculateValues";
 
-function ComparisonTable({ data, baseCurrency, startDate, endDate, amount }) {
-  const startData = data.find((item) => item.Date === startDate);
-  const endData = data.find((item) => item.Date === endDate);
+function ComparisonTable({
+  data,
+  baseCurrency,
+  startDate,
+  endDate,
+  amount,
+  setBaseCurrency,
+  setStartDate,
+  setEndDate,
+  setAmount,
+}) {
+  const { startValues, endValues } = calculateValues(
+    data,
+    baseCurrency,
+    startDate,
+    endDate,
+    amount
+  );
 
-  if (!startData || !endData) {
+  if (!startValues || !endValues) {
     return <div>Geçerli bir tarih aralığı seçin!</div>;
   }
-
-  // TRY veya USD bazlı hesaplama için oranlar
-  const startRate = baseCurrency === "TRY" ? 1 : startData.USDTRY;
-  const endRate = baseCurrency === "TRY" ? 1 : endData.USDTRY;
-
-  // Başlangıç miktarını baz para birimine göre normalize et
-  const startAmountInBase = amount * startRate;
-
-  // TRY hesaplamaları
-  const startTRY = baseCurrency === "TRY" ? amount : amount * startData.USDTRY;
-  const endTRY =
-    baseCurrency === "TRY"
-      ? amount * (endData.TRYInflationIndex / startData.TRYInflationIndex)
-      : (amount * startData.USDTRY) / endData.USDTRY;
-
-  // USD hesaplamaları
-  const startUSD = baseCurrency === "USD" ? amount : amount / startData.USDTRY;
-  const endUSD =
-    baseCurrency === "USD"
-      ? amount * (endData.USDInflationIndex / startData.USDInflationIndex)
-      : (amount * startData.USDTRY) / endData.USDTRY;
-
-  // EUR hesaplamaları
-  const startEUR = startTRY / startData.EURTRY;
-  const endEUR = endTRY / endData.EURTRY;
-
-  // Altın hesaplamaları
-  const startGold = startTRY / startData.GoldPerGramTRY;
-  const endGold = endTRY / endData.GoldPerGramTRY;
-
-  // Asgari ücret hesaplamaları
-  const startMinWageRatio = startAmountInBase / startData.minWageNetTRY;
-  const endMinWageRatio = (endTRY / endData.minWageNetTRY).toFixed(2);
-
-  // Normalize edilmiş karşılıklar
-  const startNormalized =
-    baseCurrency === "TRY"
-      ? amount / startData.USDTRY_TRY_NORM
-      : amount * (startData.USDTRY / startData.TRYInflationIndex);
-
-  const endNormalized =
-    baseCurrency === "TRY"
-      ? endTRY / endData.USDTRY_TRY_NORM
-      : endUSD / endData.TRYInflationIndex;
 
   return (
     <table className="comparison-table">
       <thead>
         <tr>
-          <th>Özellik</th>
-          <th>Başlangıç Tarihi ({startDate})</th>
-          <th>Bitiş Tarihi ({endDate})</th>
+          <th>
+            <label htmlFor="amount">Başlangıç Miktarı:</label>
+            <input
+              type="number"
+              id="amount"
+              value={amount}
+              onChange={(e) => setAmount(Number(e.target.value))}
+              min="1"
+            />
+            <label htmlFor="baseCurrency">Baz Para Birimi:</label>
+            <select
+              id="baseCurrency"
+              value={baseCurrency}
+              onChange={(e) => setBaseCurrency(e.target.value)}
+            >
+              <option value="TRY">TRY</option>
+              <option value="USD">USD</option>
+            </select>
+          </th>
+          <th>
+            <label htmlFor="startDate">Başlangıç Tarihi:</label>
+            <input
+              type="month"
+              id="startDate"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+            />
+          </th>
+          <th>
+            <label htmlFor="endDate">Bitiş Tarihi:</label>
+            <input
+              type="month"
+              id="endDate"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+            />
+          </th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>TRY Karşılığı</td>
-          <td>{startTRY.toFixed(2)}</td>
-          <td>{endTRY.toFixed(2)}</td>
+          <td>{startValues.tryValue.toFixed(2)}</td>
+          <td>{endValues.tryValue.toFixed(2)}</td>
         </tr>
         <tr>
           <td>USD Karşılığı</td>
-          <td>{startUSD.toFixed(2)}</td>
-          <td>{endUSD.toFixed(2)}</td>
+          <td>{startValues.usdValue.toFixed(2)}</td>
+          <td>{endValues.usdValue.toFixed(2)}</td>
         </tr>
         <tr>
           <td>EUR Karşılığı</td>
-          <td>{startEUR.toFixed(2)}</td>
-          <td>{endEUR.toFixed(2)}</td>
+          <td>{startValues.eurValue.toFixed(2)}</td>
+          <td>{endValues.eurValue.toFixed(2)}</td>
         </tr>
         <tr>
           <td>Altın Karşılığı (gram)</td>
-          <td>{startGold.toFixed(1)}</td>
-          <td>{endGold.toFixed(1)}</td>
+          <td>{startValues.goldValue.toFixed(1)}</td>
+          <td>{endValues.goldValue.toFixed(1)}</td>
         </tr>
         <tr>
           <td>Asgari Ücret Karşılığı</td>
-          <td>{startMinWageRatio.toFixed(2)}×</td>
-          <td>{endMinWageRatio}×</td>
+          <td>{startValues.minWageRatio.toFixed(2)}×</td>
+          <td>{endValues.minWageRatio.toFixed(2)}×</td>
         </tr>
         <tr>
           <td>
             {baseCurrency === "TRY"
-              ? "Dolar Enflasyondan Arındırılmış Karşılık"
-              : "TRY Enflasyondan Arındırılmış Karşılık"}
+              ? "Normalize Edilmiş USD Karşılığı"
+              : "Normalize Edilmiş TRY Karşılığı"}
           </td>
-          <td>{startNormalized.toFixed(2)}</td>
-          <td>{endNormalized.toFixed(2)}</td>
+          <td>{startValues.normalizedValue.toFixed(2)}</td>
+          <td>{endValues.normalizedValue.toFixed(2)}</td>
         </tr>
       </tbody>
     </table>
