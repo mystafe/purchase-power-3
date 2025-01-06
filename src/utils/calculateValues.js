@@ -10,60 +10,35 @@ export const calculateValues = (data, baseCurrency, startDate, endDate, amount) 
     return { startValues: null, endValues: null };
   }
 
-  // TRY ve USD Bazlı Hesaplama
+  const startRate = baseCurrency === "TRY" ? 1 : startData.USDTRY;
+  const endRate = baseCurrency === "TRY" ? 1 : endData.USDTRY;
+
   const startTRY = baseCurrency === "TRY" ? amount : amount * startData.USDTRY;
-  const endTRY =
-    baseCurrency === "TRY"
-      ? startTRY * (endData.TRYInflationIndex / startData.TRYInflationIndex)
-      : startTRY * (startData.USDTRY / endData.USDTRY);
+  const endTRY = baseCurrency === "TRY"
+    ? startTRY * (endData.TRYInflationIndex / startData.TRYInflationIndex)
+    : startTRY * (startData.USDTRY / endData.USDTRY);
 
   const startUSD = baseCurrency === "USD" ? amount : startTRY / startData.USDTRY;
-  const endUSD =
-    baseCurrency === "USD"
-      ? startUSD * (endData.USDInflationIndex / startData.USDInflationIndex)
-      : endTRY / endData.USDTRY;
+  const endUSD = baseCurrency === "USD"
+    ? startUSD * (endData.USDInflationIndex / startData.USDInflationIndex)
+    : endTRY / endData.USDTRY;
 
-  // EUR Hesaplama
-  const startEUR =
-    baseCurrency === "USD"
-      ? amount * (startData.USDTRY / startData.EURTRY)
-      : startTRY / startData.EURTRY;
-  const endEUR =
-    baseCurrency === "USD"
-      ? startEUR * (endData.USDTRY / endData.EURTRY)
-      : endTRY / endData.EURTRY;
+  const startEUR = startTRY / startData.EURTRY;
+  const endEUR = endTRY / endData.EURTRY;
 
-  // Altın Hesaplama
-  const startGold =
-    baseCurrency === "USD"
-      ? amount / (startData.GoldPerGramTRY / startData.USDTRY)
-      : startTRY / startData.GoldPerGramTRY;
-  const endGold =
-    baseCurrency === "USD"
-      ? startGold * (startData.GoldPerGramTRY / endData.GoldPerGramTRY)
-      : endTRY / endData.GoldPerGramTRY;
+  const startGold = startTRY / startData.GoldPerGramTRY;
+  const endGold = endTRY / endData.GoldPerGramTRY;
 
-  // Asgari Ücret Hesaplama
-  const startMinWageRatio =
-    baseCurrency === "USD"
-      ? amount / (startData.minWageNetTRY / startData.USDTRY)
-      : startTRY / startData.minWageNetTRY;
-  const endMinWageRatio =
-    baseCurrency === "USD"
-      ? endUSD / (endData.minWageNetTRY / endData.USDTRY)
-      : endTRY / endData.minWageNetTRY;
+  const startMinWageRatio = startTRY / startData.minWageNetTRY;
+  const endMinWageRatio = endTRY / endData.minWageNetTRY;
 
-  // Normalize Edilmiş Değer Hesaplama
-  const startNormalized =
-    baseCurrency === "TRY"
-      ? startTRY / startData.USDTRY_TRY_NORM
-      : startUSD * startData.USDTRY_TRY_NORM;
-  const endNormalized =
-    baseCurrency === "TRY"
-      ? endTRY / endData.USDTRY_TRY_NORM
-      : endUSD * endData.USDTRY_TRY_NORM;
+  const startNormalized = baseCurrency === "TRY"
+    ? startTRY / startData.USDTRY_TRY_NORM
+    : startUSD * startData.USDTRY_TRY_NORM;
+  const endNormalized = baseCurrency === "TRY"
+    ? endTRY / endData.USDTRY_TRY_NORM
+    : endUSD * endData.USDTRY_TRY_NORM;
 
-  // Değerleri Dönüş
   return {
     startValues: {
       tryValue: startTRY,
