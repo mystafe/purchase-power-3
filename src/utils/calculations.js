@@ -1,5 +1,5 @@
 export async function fetchData() {
-  const response = await fetch("./data/data.json");
+  const response = await fetch("http://localhost:4000/api/data");
   return response.json();
 }
 
