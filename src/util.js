@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 function formatUsdTryFromFile() {
-  const filePath = path.join(__dirname, '../public/data/data.json'); // public/data dizininde varsayıyoruz
+  const filePath = path.join(__dirname, '../public/data/data.json'); // data.json resides in the data subdirectory
   try {
     const rawData = fs.readFileSync(filePath, 'utf8');
     const data = JSON.parse(rawData);
