@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Purchase Power Comparison App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This React application lets you compare the purchasing power of an amount of money across two dates. It uses inflation, exchange rate and gold price data to convert between TRY, USD and EUR as well as the value in grams of gold or in units of the minimum wage.
 
-## Available Scripts
+## Data
 
-In the project directory, you can run:
+The dataset is provided in `public/data/data.json`. If you need to regenerate it, an Excel file `public/data/CPIAUCSL.xlsx` is included. Two helper scripts are available:
 
-### `yarn start`
+- `src/util2.js` – converts the Excel file to JSON (`src/output.json`).
+- `src/util.js` – rounds numeric values and writes the processed JSON (`src/output.json`).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+You can run these scripts with Node:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+node src/util2.js    # convert the Excel sheet to JSON
+node src/util.js     # format the numbers
+cp src/output.json public/data/data.json
+```
 
-### `yarn test`
+## Running the project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Install dependencies and start the development server:
 
-### `yarn build`
+```bash
+yarn install
+yarn start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To create a production build use:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+yarn build
+```
 
-### `yarn eject`
+The build output will be placed in the `build/` directory and can be deployed to services like Netlify (see `netlify.toml`).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Choose a base currency (TRY or USD), a start date, an end date and an amount. The **ComparisonTable** component will then show how that amount translates into different currencies, gold and the minimum wage at the selected dates. The calculations are handled in `src/utils/calculateValues.js`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Other components such as `TrendChart`, `DataChart` and `Graph` provide additional visualisations and can be explored in the `src/components` directory.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
