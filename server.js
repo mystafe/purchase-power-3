@@ -1,4 +1,3 @@
-// Version 2.2.2
 const express = require('express');
 const cors = require('cors');
 const xlsx = require('xlsx');

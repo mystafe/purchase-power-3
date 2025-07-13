@@ -1,4 +1,3 @@
-// Version 2.2.2
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import ComparisonTable from "./components/ComparisonTable";
