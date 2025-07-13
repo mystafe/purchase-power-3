@@ -33,7 +33,7 @@ function printDataLineByLine(data) {
 }
 
 
-// Çalıştırma
+// Çalıştırma  /test
 printDataLineByLine(formattedData);
 
 function saveDataToFile(data, fileName) {
