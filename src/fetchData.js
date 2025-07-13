@@ -1,4 +1,4 @@
-//import data from './data.json'; wıth fetch pure javascript
+//import data from './data.json'; with fetch using plain JavaScript
 
 const fetchData = async () => {
   const response = await fetch('./data/data.json');
