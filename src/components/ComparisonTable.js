@@ -1,6 +1,14 @@
 import React from "react";
 import { calculateValues } from "../utils/calculateValues";
 
+const adjustMonth = (date, diff) => {
+  const [y, m] = date.split("-").map(Number);
+  const d = new Date(y, m - 1 + diff);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  return `${year}-${month}`;
+};
+
 function ComparisonTable({
   data,
   baseCurrency,
@@ -12,6 +20,8 @@ function ComparisonTable({
   setEndDate,
   setAmount,
 }) {
+  const incStartDate = (diff) => setStartDate(adjustMonth(startDate, diff));
+  const incEndDate = (diff) => setEndDate(adjustMonth(endDate, diff));
   const { startValues, endValues } = calculateValues(
     data,
     baseCurrency,
@@ -50,25 +60,35 @@ function ComparisonTable({
             </th>
             <th>
               <label htmlFor="startDate">Başlangıç Tarihi:</label>
-              <input
-                type="month"
-                id="startDate"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-                min="1980-01"
-                max="2025-01"
-              />
+              <div className="d-flex align-items-center gap-1">
+                <button type="button" onClick={() => incStartDate(-1)}>-</button>
+                <input
+                  type="month"
+                  id="startDate"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                  min="1980-01"
+                  max="2024-12"
+                  step="1"
+                />
+                <button type="button" onClick={() => incStartDate(1)}>+</button>
+              </div>
             </th>
             <th>
               <label htmlFor="endDate">Bitiş Tarihi:</label>
-              <input
-                type="month"
-                id="endDate"
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
-                min="1980-01"
-                max="2025-01"
-              />
+              <div className="d-flex align-items-center gap-1">
+                <button type="button" onClick={() => incEndDate(-1)}>-</button>
+                <input
+                  type="month"
+                  id="endDate"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                  min="1980-01"
+                  max="2024-12"
+                  step="1"
+                />
+                <button type="button" onClick={() => incEndDate(1)}>+</button>
+              </div>
             </th>
           </tr>
         </thead>
