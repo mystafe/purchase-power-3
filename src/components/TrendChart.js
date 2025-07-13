@@ -1,4 +1,4 @@
-// Version 2.2.1
+// Version 2.2.2
 import React, { useEffect, useRef } from "react";
 import {
   Chart as ChartJS,

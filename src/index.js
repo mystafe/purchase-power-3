@@ -1,4 +1,4 @@
-// Version 2.2.1
+// Version 2.2.2
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
