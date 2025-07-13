@@ -3,7 +3,7 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #e0e4ec 0%, #bfc3ca 100%);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   color: #222222;
   min-height: 100vh;
   font-size: 0.95rem;
@@ -27,8 +27,45 @@ body {
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: #000000;
-    color: #dddddd;
+    background: #181818;
+    color: #e0e0e0;
+  }
+
+  .filters,
+  .comparison-table {
+    background-color: #222222;
+    color: #e0e0e0;
+    border-color: #444444;
+  }
+
+  .filters input,
+  .filters select,
+  .comparison-table input,
+  .comparison-table select {
+    background: #2c2c2c;
+    border-color: #444444;
+    color: #e0e0e0;
+  }
+
+  .comparison-table tr:nth-child(even) {
+    background-color: #262626;
+  }
+
+  .comparison-table tr:hover {
+    background-color: #333333;
+  }
+
+  .comparison-table td {
+    color: #e0e0e0;
+  }
+
+  button {
+    background: #1a73e8;
+    color: #ffffff;
+  }
+
+  button:hover {
+    background: #1669c1;
   }
 }
 
@@ -170,6 +207,20 @@ th > select {
 input:focus,
 select:focus {
   border: 2px solid #0d6efd;
+}
+
+button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  background: #0d6efd;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+button:hover {
+  background: #0b5ed7;
 }
 
 /* Responsive */

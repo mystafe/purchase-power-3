@@ -24,9 +24,23 @@ function ComparisonChart({ data, baseCurrency }) {
     ],
   };
 
+  const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const axisColor = darkMode ? '#e0e0e0' : '#222';
+  const gridColor = darkMode ? '#444' : '#ccc';
+
+  const options = {
+    scales: {
+      x: { ticks: { color: axisColor }, grid: { color: gridColor } },
+      y: { ticks: { color: axisColor }, grid: { color: gridColor } },
+    },
+    plugins: {
+      legend: { labels: { color: axisColor } },
+    },
+  };
+
   return (
     <div style={{ width: "80%", margin: "auto" }}>
-      <Bar data={chartData} />
+      <Bar data={chartData} options={options} />
     </div>
   );
 }
