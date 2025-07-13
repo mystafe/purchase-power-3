@@ -1,4 +1,3 @@
-// Version 2.2.2
 import React, { useState } from "react";
 
 const DataForm = ({ onFilter }) => {
