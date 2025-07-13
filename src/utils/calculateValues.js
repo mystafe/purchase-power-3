@@ -16,7 +16,7 @@ export const calculateValues = (data, baseCurrency, startDate, endDate, amount) 
   const startTRY = baseCurrency === "TRY" ? amount : amount * startData.USDTRY;
   const endTRY = baseCurrency === "TRY"
     ? startTRY * (endData.TRYInflationIndex / startData.TRYInflationIndex)
-    : startTRY * (startData.USDTRY / endData.USDTRY);
+    : startTRY * (endData.USDTRY / startData.USDTRY);
 
   const startUSD = baseCurrency === "USD" ? amount : startTRY / startData.USDTRY;
   const endUSD = baseCurrency === "USD"
