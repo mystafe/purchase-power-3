@@ -1,3 +1,4 @@
+// Version 2.2.1
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import ComparisonTable from "./components/ComparisonTable";
@@ -34,8 +35,8 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <h1>Para Değeri Karşılaştırma</h1>
+    <div className="container py-4">
+      <h1 className="text-center mb-4">Para Değeri Karşılaştırma</h1>
       <ComparisonTable
         data={data}
         baseCurrency={baseCurrency}
@@ -47,12 +48,16 @@ function App() {
         setStartDate={setStartDate}
         setEndDate={setEndDate}
       />
-      <button onClick={() => setShowGraph((prev) => !prev)}>
-        {showGraph ? "Grafiği Gizle" : "Grafiği Göster"}
-      </button>
+      <div className="text-center my-3">
+        <button className="btn btn-primary" onClick={() => setShowGraph((prev) => !prev)}>
+          {showGraph ? "Grafiği Gizle" : "Grafiği Göster"}
+        </button>
+      </div>
       {showGraph && <Graph data={data} />}
+      <footer className="text-center mt-4">
+        Mustafa Evleksiz tarafından geliştirilmiştir
+      </footer>
     </div>
-
   );
 }
 

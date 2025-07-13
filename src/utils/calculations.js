@@ -1,3 +1,4 @@
+// Version 2.2.1
 export async function fetchData() {
   const response = await fetch("/api/data");
   return response.json();

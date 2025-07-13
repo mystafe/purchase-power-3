@@ -1,3 +1,4 @@
+// Version 2.2.1
 import React from "react";
 import { calculateValues } from "../utils/calculateValues";
 
@@ -26,7 +27,7 @@ function ComparisonTable({
 
   return (
     <>
-      <table className="comparison-table">
+      <table className="comparison-table table table-bordered">
         <thead>
           <tr>
             <th>
@@ -126,9 +127,6 @@ function ComparisonTable({
         </tbody>
 
       </table>
-      <p>
-        <h4>  Mustafa Evleksiz </h4>
-      </p>
     </>
   );
 }
