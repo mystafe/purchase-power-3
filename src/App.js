@@ -3,6 +3,8 @@ import "./App.css";
 import ComparisonTable from "./components/ComparisonTable";
 import Graph from "./components/Graph";
 
+const logoUrl = "/logo.svg";
+
 function App() {
   const [data, setData] = useState([]);
   const [baseCurrency, setBaseCurrency] = useState("TRY"); // Baz para birimi
@@ -34,7 +36,10 @@ function App() {
 
   return (
     <div className="container py-4">
-      <h1 className="text-center mb-4">Para Değeri Karşılaştırma</h1>
+      <header className="text-center mb-4">
+        <img src={logoUrl} alt="Alim Gucu" style={{ height: "60px" }} />
+        <h1>Para Değeri Karşılaştırma</h1>
+      </header>
       <ComparisonTable
         data={data}
         baseCurrency={baseCurrency}
