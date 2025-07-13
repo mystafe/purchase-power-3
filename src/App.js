@@ -1,4 +1,4 @@
-// Version 2.2.1
+// Version 2.2.2
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import ComparisonTable from "./components/ComparisonTable";
@@ -49,7 +49,7 @@ function App() {
       />
       <Graph data={data} startDate={startDate} endDate={endDate} />
       <footer className="text-center mt-4">
-        Mustafa Evleksiz tarafından geliştirilmiştir
+        Developed by Mustafa Evleksiz - Version 2.2.2 © {new Date().getFullYear()}
       </footer>
     </div>
   );

@@ -1,4 +1,4 @@
-// Version 2.2.1
+// Version 2.2.2
 export const calculateValues = (data, baseCurrency, startDate, endDate, amount) => {
   if (!data || !startDate || !endDate) {
     return { startValues: null, endValues: null };

@@ -1,4 +1,4 @@
-// Version 2.2.1
+// Version 2.2.2
 import React from "react";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
