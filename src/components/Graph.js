@@ -1,5 +1,9 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+// Chart.js v3+ requires the chart components to be registered.
+// Importing "chart.js/auto" takes care of the registration automatically
+// so that the <Line /> component can render without errors.
+import "chart.js/auto";
 
 const Graph = ({ data }) => {
   const chartData = {
