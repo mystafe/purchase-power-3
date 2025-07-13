@@ -1,6 +1,6 @@
 {
   "name": "purchase-power-3",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
