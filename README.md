@@ -40,5 +40,11 @@ The build output will be placed in the `build/` directory and can be deployed to
 
 Choose a base currency (TRY or USD), a start date, an end date and an amount. The **ComparisonTable** component will then show how that amount translates into different currencies, gold and the minimum wage at the selected dates. The calculations are handled in `src/utils/calculateValues.js`.
 
-Other components such as `TrendChart`, `DataChart` and `Graph` provide additional visualisations and can be explored in the `src/components` directory.
+The app's main building blocks can be found in `src/components`:
+
+- `DataForm` and `Filters` collect user selections
+- `ComparisonTable` displays the converted values in table form
+- `TrendChart`, `ComparisonChart`, `DataChart` and `Graph` visualise the data in different ways
+
+These components can be customised or extended as needed.
 
