@@ -9,8 +9,8 @@ const logoUrl = "/logo.svg";
 function App() {
   const [data, setData] = useState([]);
   const [baseCurrency, setBaseCurrency] = useState("TRY"); // Baz para birimi
-  const [startDate, setStartDate] = useState("2022-01");
-  const [endDate, setEndDate] = useState("2024-12");
+  const [startDate, setStartDate] = useState("2020-01");
+  const [endDate, setEndDate] = useState("2025-07");
   const [amount, setAmount] = useState(100); // Başlangıç miktarı
 
   useEffect(() => {
@@ -36,8 +36,8 @@ function App() {
   }, []);
 
   return (
-    <div className="container py-4">
-      <header className="text-center mb-4">
+    <div className="container py-4 fade-in">
+      <header className="text-center mb-4 fade-in">
         <img src={logoUrl} alt="Alim Gucu" style={{ height: "60px" }} />
         <h1>Para Değeri Karşılaştırma</h1>
       </header>
