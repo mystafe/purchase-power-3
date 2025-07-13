@@ -3,8 +3,21 @@ export const calculateValues = (data, baseCurrency, startDate, endDate, amount) 
     return { startValues: null, endValues: null };
   }
 
-  const startData = data.find((item) => item.Date === startDate);
-  const endData = data.find((item) => item.Date === endDate);
+  const parse = (d) => parseInt(d.replace('-', ''), 10);
+  const min = data[0].Date;
+  const max = data[data.length - 1].Date;
+
+  let startData = data.find((item) => item.Date === startDate);
+  if (!startData) {
+    if (parse(startDate) < parse(min)) startData = data[0];
+    else if (parse(startDate) > parse(max)) startData = data[data.length - 1];
+  }
+
+  let endData = data.find((item) => item.Date === endDate);
+  if (!endData) {
+    if (parse(endDate) < parse(min)) endData = data[0];
+    else if (parse(endDate) > parse(max)) endData = data[data.length - 1];
+  }
 
   if (!startData || !endData) {
     return { startValues: null, endValues: null };

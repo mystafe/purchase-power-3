@@ -3,10 +3,17 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #e0e4ec 0%, #a6b0c1 100%);
+  background: linear-gradient(135deg, #e0e4ec 0%, #bfc3ca 100%);
   color: #222222;
   min-height: 100vh;
   font-size: 0.95rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #000000;
+    color: #dddddd;
+  }
 }
 
 h1 {
