@@ -60,6 +60,18 @@ body {
     color: var(--text-dark);
   }
 
+  input[type="number"],
+  input[type="month"],
+  select {
+    background: var(--input-dark);
+    border-color: #444444;
+    color: var(--text-dark);
+  }
+
+  .filters label {
+    color: var(--text-dark);
+  }
+
   .comparison-table tr:nth-child(even) {
     background-color: var(--row-dark);
   }
@@ -202,6 +214,7 @@ select {
   width: 90%;
   box-sizing: border-box;
   background: #F9F9F9;
+  color: #222222;
 }
 
 th > label,
