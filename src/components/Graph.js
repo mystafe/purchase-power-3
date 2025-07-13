@@ -1,3 +1,4 @@
+// Version 2.2.1
 import React from "react";
 import { Line } from "react-chartjs-2";
 // Chart.js v3+ requires the chart components to be registered.

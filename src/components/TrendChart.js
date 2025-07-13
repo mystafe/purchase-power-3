@@ -1,3 +1,4 @@
+// Version 2.2.1
 import React, { useEffect, useRef } from "react";
 import {
   Chart as ChartJS,
