@@ -1,12 +1,27 @@
 /* Genel Stil */
+:root {
+  --primary-color: #0d6efd;
+  --primary-color-hover: #0b5ed7;
+  --bg-light-start: #f5f7fa;
+  --bg-light-end: #c3cfe2;
+  --text-light: #222222;
+  --bg-dark: #202124;
+  --surface-dark: #282a2d;
+  --input-dark: #303134;
+  --row-dark: #2f3134;
+  --hover-dark: #3a3d41;
+  --text-dark: #e0e0e0;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  color: #222222;
+  background: linear-gradient(135deg, var(--bg-light-start) 0%, var(--bg-light-end) 100%);
+  color: var(--text-light);
   min-height: 100vh;
   font-size: 0.95rem;
+  transition: background 0.3s ease;
 }
 
 /* Basit fade-in animasyonu */
@@ -27,30 +42,30 @@ body {
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: #181818;
-    color: #e0e0e0;
+    background: var(--bg-dark);
+    color: var(--text-dark);
   }
 
   .filters,
   .comparison-table {
-    background-color: #222222;
-    color: #e0e0e0;
+    background-color: var(--surface-dark);
+    color: var(--text-dark);
     border-color: #444444;
   }
 
   .filters input,
   .filters select {
-    background: #2c2c2c;
+    background: var(--input-dark);
     border-color: #444444;
-    color: #e0e0e0;
+    color: var(--text-dark);
   }
 
   .comparison-table tr:nth-child(even) {
-    background-color: #262626;
+    background-color: var(--row-dark);
   }
 
   .comparison-table tr:hover {
-    background-color: #333333;
+    background-color: var(--hover-dark);
   }
 
   button {
@@ -66,7 +81,7 @@ body {
 h1 {
   text-align: center;
   margin: 20px 0;
-  color: #084298;
+  color: var(--primary-color);
   font-size: 2.2rem;
   font-weight: 600;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
@@ -107,12 +122,12 @@ h1 {
 .filters input:hover,
 .filters select:hover {
   background: #F5F5F5;
-  border-color: #0d6efd;
+  border-color: var(--primary-color);
 }
 
 .filters input:focus,
 .filters select:focus {
-  border-color: #0d6efd;
+  border-color: var(--primary-color);
   outline: none;
 }
 
@@ -137,7 +152,7 @@ h1 {
 }
 
 .comparison-table th {
-  background: #084298;
+  background: var(--primary-color);
   color: #FFFFFF;
   text-transform: uppercase;
   font-size: 0.9rem;
@@ -200,21 +215,21 @@ th > select {
 
 input:focus,
 select:focus {
-  border: 2px solid #0d6efd;
+  border: 2px solid var(--primary-color);
 }
 
 button {
   padding: 5px 10px;
   border: none;
   border-radius: 4px;
-  background: #0d6efd;
+  background: var(--primary-color);
   color: #ffffff;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
 }
 
 button:hover {
-  background: #0b5ed7;
+  background: var(--primary-color-hover);
 }
 
 /* Responsive */
