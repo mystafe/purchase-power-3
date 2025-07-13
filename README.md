@@ -6,15 +6,15 @@ This React application lets you compare the purchasing power of an amount of mon
 
 The dataset is provided in `public/data/data.json`. If you need to regenerate it, an Excel file `public/data/CPIAUCSL.xlsx` is included. Two helper scripts are available:
 
-- `src/util2.js` – converts the Excel file to JSON (`src/output.json`).
-- `src/util.js` – rounds numeric values and writes the processed JSON (`src/output.json`).
+- `scripts/util2.js` – converts the Excel file to JSON (`scripts/output.json`).
+- `scripts/util.js` – rounds numeric values and writes the processed JSON (`scripts/output.json`).
 
 You can run these scripts with Node:
 
 ```bash
-node src/util2.js    # convert the Excel sheet to JSON
-node src/util.js     # format the numbers
-cp src/output.json public/data/data.json
+node scripts/util2.js    # convert the Excel sheet to JSON
+node scripts/util.js     # format the numbers
+cp scripts/output.json public/data/data.json
 ```
 
 ## Running the project
