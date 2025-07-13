@@ -10,10 +10,25 @@ function App() {
   const [amount, setAmount] = useState(100); // Başlangıç miktarı
 
   useEffect(() => {
-    fetch("/api/data")
-      .then((response) => response.json())
-      .then((fetchedData) => setData(fetchedData))
-      .catch((err) => console.error("Veri yükleme hatası:", err));
+    const loadData = async () => {
+      try {
+        const apiRes = await fetch("/api/data");
+        if (!apiRes.ok) {
+          throw new Error("API not available");
+        }
+        const apiData = await apiRes.json();
+        setData(apiData);
+      } catch {
+        try {
+          const staticRes = await fetch("/data/data.json");
+          const staticData = await staticRes.json();
+          setData(staticData);
+        } catch (err) {
+          console.error("Veri yükleme hatası:", err);
+        }
+      }
+    };
+    loadData();
   }, []);
 
   return (
