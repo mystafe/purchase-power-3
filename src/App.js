@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import ComparisonTable from "./components/ComparisonTable";
+import Graph from "./components/Graph";
 
 function App() {
   const [data, setData] = useState([]);
@@ -8,6 +9,7 @@ function App() {
   const [startDate, setStartDate] = useState("2022-01");
   const [endDate, setEndDate] = useState("2025-01");
   const [amount, setAmount] = useState(100); // Başlangıç miktarı
+  const [showGraph, setShowGraph] = useState(false);
 
   useEffect(() => {
     const loadData = async () => {
@@ -45,9 +47,11 @@ function App() {
         setStartDate={setStartDate}
         setEndDate={setEndDate}
       />
-
+      <button onClick={() => setShowGraph((prev) => !prev)}>
+        {showGraph ? "Grafiği Gizle" : "Grafiği Göster"}
+      </button>
+      {showGraph && <Graph data={data} />}
     </div>
-
 
   );
 }
