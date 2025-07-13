@@ -7852,7 +7852,7 @@
       "EURTRY": 21.41,
       "USDTRY_TRY_NORM": 25.911425495925,
       "USDTRY_NORM": 6.662242475836533,
-      "TRYInflationIndex": 130.06
+      "TRYInflationIndex": 1300.60
   },
   {
       "Date": "2023-06",
@@ -7867,7 +7867,7 @@
       "EURTRY": 22.19,
       "USDTRY_TRY_NORM": 27.6273258496079,
       "USDTRY_NORM": 7.088520232594469,
-      "TRYInflationIndex": 130.06
+      "TRYInflationIndex": 1351.59
   },
   {
       "Date": "2023-07",
@@ -7942,7 +7942,7 @@
       "EURTRY": 29.95,
       "USDTRY_TRY_NORM": 27.1303072239136,
       "USDTRY_NORM": 6.870126884480628,
-      "TRYInflationIndex": 180.65
+      "TRYInflationIndex": 1806.50
   },
   {
       "Date": "2023-12",
@@ -8017,7 +8017,7 @@
       "EURTRY": 34.97,
       "USDTRY_TRY_NORM": 25.4072933182333,
       "USDTRY_NORM": 6.327345425939386,
-      "TRYInflationIndex": 220.75
+      "TRYInflationIndex": 2207.50
   },
   {
       "Date": "2024-05",
@@ -8062,7 +8062,7 @@
       "EURTRY": 35.17,
       "USDTRY_TRY_NORM": 23.5932083037467,
       "USDTRY_NORM": 5.86944397638611,
-      "TRYInflationIndex": 239.41
+      "TRYInflationIndex": 2394.10
   },
   {
       "Date": "2024-08",
@@ -8107,7 +8107,7 @@
       "EURTRY": 38.06,
       "USDTRY_TRY_NORM": 23.40762263672927,
       "USDTRY_NORM": 5.7878313974934,
-      "TRYInflationIndex": 2526.16
+      "TRYInflationIndex": 2598.21
   },
   {
       "Date": "2024-11",
