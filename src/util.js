@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 function formatUsdTryFromFile() {
-  const filePath = path.join(__dirname, 'data/data.json'); // data.json dosyasının 'data' alt dizininde bulunduğunu varsayıyoruz
+  const filePath = path.join(__dirname, '../public/data/data.json'); // public/data dizininde varsayıyoruz
   try {
     const rawData = fs.readFileSync(filePath, 'utf8');
     const data = JSON.parse(rawData);
