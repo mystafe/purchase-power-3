@@ -1,5 +1,5 @@
 export const calculateValues = (data, baseCurrency, startDate, endDate, amount) => {
-  if (!data || !startDate || !endDate) {
+  if (!Array.isArray(data) || data.length === 0 || !startDate || !endDate) {
     return { startValues: null, endValues: null };
   }
 
