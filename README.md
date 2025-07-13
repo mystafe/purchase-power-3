@@ -4,7 +4,7 @@ This React application lets you compare the purchasing power of an amount of mon
 
 ## Data
 
-The dataset is provided in `public/data/data.json`. If you need to regenerate it, an Excel file `public/data/CPIAUCSL.xlsx` is included. Two helper scripts are available:
+The dataset is provided in an Excel file `public/data/CPIAUCSL.xlsx`. During development an Express server serves this file as JSON from `/api/data`. Two helper scripts are available if you need to regenerate the JSON manually:
 
 - `src/util2.js` – converts the Excel file to JSON (`src/output.json`).
 - `src/util.js` – rounds numeric values and writes the processed JSON (`src/output.json`).
@@ -24,6 +24,12 @@ Install dependencies and start the development server:
 ```bash
 yarn install
 yarn start
+```
+
+To start the API server run:
+
+```bash
+yarn server
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the app.

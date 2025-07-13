@@ -10,7 +10,7 @@ function App() {
   const [amount, setAmount] = useState(100); // Başlangıç miktarı
 
   useEffect(() => {
-    fetch("./data/data.json")
+    fetch("http://localhost:4000/api/data")
       .then((response) => response.json())
       .then((fetchedData) => setData(fetchedData))
       .catch((err) => console.error("Veri yükleme hatası:", err));
