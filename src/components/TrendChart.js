@@ -52,12 +52,26 @@ function TrendChart({ data, baseCurrency, initialValue }) {
       ],
     };
 
+    const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const axisColor = darkMode ? '#e0e0e0' : '#222';
+    const gridColor = darkMode ? '#444' : '#ccc';
+
     // Grafik ayarları
     const chartOptions = {
       responsive: true,
+      scales: {
+        x: {
+          ticks: { color: axisColor },
+          grid: { color: gridColor },
+        },
+        y: {
+          ticks: { color: axisColor },
+          grid: { color: gridColor },
+        },
+      },
       plugins: {
-        legend: { display: true },
-        title: { display: true, text: "Zamanla Değişim Grafiği" },
+        legend: { display: true, labels: { color: axisColor } },
+        title: { display: true, text: "Zamanla Değişim Grafiği", color: axisColor },
       },
     };
 
