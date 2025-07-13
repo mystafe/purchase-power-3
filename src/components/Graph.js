@@ -88,7 +88,7 @@ const Graph = ({ data, startDate, endDate }) => {
   };
 
   return (
-    <div>
+    <div className="fade-in">
       <h3>Enflasyon ve Finansal Göstergeler</h3>
       <Line data={chartData} options={options} />
     </div>

@@ -36,7 +36,7 @@ function ComparisonTable({
 
   return (
     <>
-      <table className="comparison-table table table-bordered">
+      <table className="comparison-table table table-bordered fade-in">
         <thead>
           <tr>
             <th>
@@ -68,7 +68,7 @@ function ComparisonTable({
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
                   min="1980-01"
-                  max="2024-12"
+                  max="2025-07"
                   step="1"
                 />
                 <button type="button" onClick={() => incStartDate(1)}>+</button>
@@ -84,7 +84,7 @@ function ComparisonTable({
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
                   min="1980-01"
-                  max="2024-12"
+                  max="2025-07"
                   step="1"
                 />
                 <button type="button" onClick={() => incEndDate(1)}>+</button>
