@@ -21,6 +21,10 @@ cp src/output.json public/data/data.json
 
 Install dependencies and start the development server:
 
+The project uses Yarn 4. The included `.yarnrc.yml` configures Yarn to
+create a traditional `node_modules` folder. This is required so that
+`react-scripts` can find its ESLint configuration.
+
 ```bash
 yarn install
 yarn start
