@@ -53,7 +53,7 @@ function App() {
       />
       <Graph data={data} startDate={startDate} endDate={endDate} />
       <footer className="text-center mt-4">
-        Developed by Mustafa Evleksiz - Version 2.2.2 © {new Date().getFullYear()}
+        Developed by Mustafa Evleksiz - Version 2.2.3 © {new Date().getFullYear()}
       </footer>
     </div>
   );
