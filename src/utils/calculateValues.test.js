@@ -43,7 +43,7 @@ describe('calculateValues', () => {
     const result = calculateValues(mockData, 'USD', '2020-01', '2025-01', amount);
 
     const expectedStartTRY = amount * 5.93;
-    const expectedEndTRY = expectedStartTRY * (5.93 / 35.36);
+    const expectedEndTRY = expectedStartTRY * (35.36 / 5.93);
     const expectedEndUSD = amount * (317.3 / 258.906);
 
     expect(result.startValues.tryValue).toBeCloseTo(expectedStartTRY, 5);
