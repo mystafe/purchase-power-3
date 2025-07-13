@@ -11,14 +11,18 @@ import {
 } from "recharts";
 
 const DataChart = ({ data }) => {
+  const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const axisColor = darkMode ? '#e0e0e0' : '#222';
+  const gridColor = darkMode ? '#444' : '#ccc';
+
   return (
     <ResponsiveContainer width="100%" height={400}>
       <LineChart data={data}>
-        <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="Date" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
+        <CartesianGrid stroke={gridColor} />
+        <XAxis dataKey="Date" stroke={axisColor} tick={{ fill: axisColor }} />
+        <YAxis stroke={axisColor} tick={{ fill: axisColor }} />
+        <Tooltip contentStyle={{ background: darkMode ? '#333' : '#fff', color: axisColor }} />
+        <Legend wrapperStyle={{ color: axisColor }} />
         <Line
           type="monotone"
           dataKey="adjustedAmount"

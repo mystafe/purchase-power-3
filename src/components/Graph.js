@@ -78,12 +78,28 @@ const Graph = ({ data, startDate, endDate }) => {
     ],
   };
 
+  const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const axisColor = darkMode ? '#e0e0e0' : '#222';
+  const gridColor = darkMode ? '#444' : '#ccc';
+
   const options = {
     responsive: true,
     scales: {
-      y: {
-        ticks: { callback: (val) => val.toFixed(2) },
+      x: {
+        ticks: { color: axisColor },
+        grid: { color: gridColor },
       },
+      y: {
+        ticks: {
+          color: axisColor,
+          callback: (val) => val.toFixed(2),
+        },
+        grid: { color: gridColor },
+      },
+    },
+    plugins: {
+      legend: { labels: { color: axisColor } },
+      title: { color: axisColor },
     },
   };
 
