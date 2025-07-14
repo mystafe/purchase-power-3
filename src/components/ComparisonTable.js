@@ -97,6 +97,7 @@ function ComparisonTable({
           <tr>
             <td
               className="icon-cell"
+              onClick={() => setTooltip(tooltip === 'try' ? null : 'try')}
               onMouseEnter={() => setTooltip('try')}
               onMouseLeave={() => setTooltip(null)}
               onTouchStart={() => setTooltip('try')}
@@ -113,6 +114,7 @@ function ComparisonTable({
           <tr>
             <td
               className="icon-cell"
+              onClick={() => setTooltip(tooltip === 'usd' ? null : 'usd')}
               onMouseEnter={() => setTooltip('usd')}
               onMouseLeave={() => setTooltip(null)}
               onTouchStart={() => setTooltip('usd')}
@@ -133,6 +135,7 @@ function ComparisonTable({
           <tr>
             <td
               className="icon-cell"
+              onClick={() => setTooltip(tooltip === 'eur' ? null : 'eur')}
               onMouseEnter={() => setTooltip('eur')}
               onMouseLeave={() => setTooltip(null)}
               onTouchStart={() => setTooltip('eur')}
@@ -153,6 +156,7 @@ function ComparisonTable({
           <tr>
             <td
               className="icon-cell"
+              onClick={() => setTooltip(tooltip === 'gold' ? null : 'gold')}
               onMouseEnter={() => setTooltip('gold')}
               onMouseLeave={() => setTooltip(null)}
               onTouchStart={() => setTooltip('gold')}
@@ -173,6 +177,7 @@ function ComparisonTable({
           <tr>
             <td
               className="icon-cell"
+              onClick={() => setTooltip(tooltip === 'wage' ? null : 'wage')}
               onMouseEnter={() => setTooltip('wage')}
               onMouseLeave={() => setTooltip(null)}
               onTouchStart={() => setTooltip('wage')}
@@ -193,6 +198,7 @@ function ComparisonTable({
           <tr>
             <td
               className="icon-cell"
+              onClick={() => setTooltip(tooltip === 'norm' ? null : 'norm')}
               onMouseEnter={() => setTooltip('norm')}
               onMouseLeave={() => setTooltip(null)}
               onTouchStart={() => setTooltip('norm')}
