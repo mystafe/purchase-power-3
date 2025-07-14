@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { calculateValues } from "../utils/calculateValues";
+import FilterControls from "./FilterControls";
 
 const adjustMonth = (date, diff) => {
   const [y, m] = date.split("-").map(Number);
@@ -42,73 +43,25 @@ function ComparisonTable({
 
   return (
     <>
-      <table className="comparison-table table table-bordered fade-in">
-        <thead>
-          <tr>
-            <th colSpan="3">
-              <div className="d-flex justify-content-center flex-wrap gap-2">
-                <label htmlFor="amount" className="mb-0">MİKTAR:</label>
-                <input
-                  type="number"
-                  id="amount"
-                  value={amount}
-                  onChange={(e) => setAmount(Number(e.target.value))}
-                  min="1"
-                />
-                <label htmlFor="baseCurrency" className="mb-0">KUR:</label>
-                <select
-                  id="baseCurrency"
-                  value={baseCurrency}
-                  onChange={(e) => setBaseCurrency(e.target.value)}
-                >
-                  <option value="TRY">TRY</option>
-                  <option value="USD">USD</option>
-                </select>
-              </div>
-            </th>
-          </tr>
+      <FilterControls
+        baseCurrency={baseCurrency}
+        setBaseCurrency={setBaseCurrency}
+        startDate={startDate}
+        setStartDate={setStartDate}
+        endDate={endDate}
+        setEndDate={setEndDate}
+        amount={amount}
+        setAmount={setAmount}
+        incStartDate={incStartDate}
+        incEndDate={incEndDate}
+        superMode={superMode}
+      />
+      <table className="comparison-table table table-hover table-bordered text-center fade-in">
+        <thead className="table-primary">
           <tr>
             <th></th>
-            <th className="align-middle">
-              <label htmlFor="startDate">Başlangıç</label>
-              <div className="d-flex flex-column align-items-center gap-1">
-                {superMode && (
-                  <button type="button" onClick={() => incStartDate(1)}>+</button>
-                )}
-                <input
-                  type="month"
-                  id="startDate"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
-                  min="1980-01"
-                  max="2025-07"
-                  step="1"
-                />
-                {superMode && (
-                  <button type="button" onClick={() => incStartDate(-1)}>-</button>
-                )}
-              </div>
-            </th>
-            <th className="align-middle">
-              <label htmlFor="endDate">Bitiş</label>
-              <div className="d-flex flex-column align-items-center gap-1">
-                {superMode && (
-                  <button type="button" onClick={() => incEndDate(1)}>+</button>
-                )}
-                <input
-                  type="month"
-                  id="endDate"
-                  value={endDate}
-                  onChange={(e) => setEndDate(e.target.value)}
-                  min="1980-01"
-                  max="2025-07"
-                  step="1"
-                />
-                {superMode && (
-                  <button type="button" onClick={() => incEndDate(-1)}>-</button>
-                )}
-              </div>
-            </th>
+            <th>Başlangıç</th>
+            <th>Bitiş</th>
           </tr>
         </thead>
         <tbody>
