@@ -56,55 +56,6 @@ body {
   animation: fadeInUp 0.6s ease both;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background: var(--bg-dark);
-    color: var(--text-dark);
-  }
-
-  .filters,
-  .comparison-table {
-    background-color: var(--surface-dark);
-    color: var(--text-dark);
-    border-color: #444444;
-  }
-
-  .filters input,
-  .filters select {
-    background: var(--input-dark);
-    border-color: #444444;
-    color: var(--text-dark);
-  }
-
-  input[type="number"],
-  input[type="month"],
-  select {
-    background: var(--input-dark);
-    border-color: #444444;
-    color: var(--text-dark);
-  }
-
-  .filters label {
-    color: var(--text-dark);
-  }
-
-  .comparison-table tr:nth-child(even) {
-    background-color: var(--row-dark);
-  }
-
-  .comparison-table tr:hover {
-    background-color: var(--hover-dark);
-  }
-
-  button {
-    background: #1a73e8;
-    color: #ffffff;
-  }
-
-  button:hover {
-    background: #1669c1;
-  }
-}
 
 body.dark-mode {
   background: var(--bg-dark);
@@ -281,7 +232,7 @@ th > input,
 th > select {
   display: block;
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
   max-width: 200px;
 }
 
