@@ -430,8 +430,8 @@ button:active {
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.85rem;
-  white-space: normal;
-  word-break: break-word;
+  white-space: nowrap;
+  width: max-content;
   max-width: 95vw;
   text-align: center;
   z-index: 1100;
@@ -439,6 +439,8 @@ button:active {
 
 @media (max-width: 768px) {
   .icon-tooltip {
+    white-space: normal;
+    width: auto;
     max-width: calc(100vw - 20px);
   }
 }
