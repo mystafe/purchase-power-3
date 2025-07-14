@@ -147,6 +147,9 @@ h1 {
 
 /* Yeni filtre tasarımı */
 .filter-bar {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
   max-width: 1200px;
   margin: 20px auto;
   background: #ffffff;
@@ -157,6 +160,12 @@ h1 {
 
 body.dark-mode .filter-bar {
   background: var(--surface-dark);
+}
+
+@media (min-width: 768px) {
+  .filter-bar {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .filters label {
@@ -336,8 +345,8 @@ button:active {
   }
 
   .filter-bar {
-    flex-wrap: wrap;
-    gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
     margin: 0;
     border-radius: 0;
     box-shadow: none;

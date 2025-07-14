@@ -14,8 +14,8 @@ function FilterControls({
   superMode,
 }) {
   return (
-    <form className="row row-cols-2 g-3 p-3 rounded shadow-sm align-items-end filter-bar">
-      <div className="col-md-2">
+    <form className="filter-bar p-3 rounded shadow-sm">
+      <div className="filter-item">
         <label htmlFor="amount" className="form-label">Miktar</label>
         <input
           type="number"
@@ -26,7 +26,7 @@ function FilterControls({
           onChange={(e) => setAmount(Number(e.target.value))}
         />
       </div>
-      <div className="col-md-2">
+      <div className="filter-item">
         <label htmlFor="baseCurrency" className="form-label">Kur</label>
         <select
           id="baseCurrency"
@@ -38,7 +38,7 @@ function FilterControls({
           <option value="USD">USD</option>
         </select>
       </div>
-      <div className="col-md-4">
+      <div className="filter-item">
         <label htmlFor="startDate" className="form-label">Başlangıç</label>
         <div className="input-group">
           {superMode && (
@@ -71,7 +71,7 @@ function FilterControls({
           )}
         </div>
       </div>
-      <div className="col-md-4">
+      <div className="filter-item">
         <label htmlFor="endDate" className="form-label">Bitiş</label>
         <div className="input-group">
           {superMode && (
