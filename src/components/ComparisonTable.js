@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { calculateValues } from "../utils/calculateValues";
 
 const adjustMonth = (date, diff) => {
@@ -22,6 +22,7 @@ function ComparisonTable({
 }) {
   const incStartDate = (diff) => setStartDate(adjustMonth(startDate, diff));
   const incEndDate = (diff) => setEndDate(adjustMonth(endDate, diff));
+  const [tooltip, setTooltip] = useState(null);
   const { startValues, endValues } = calculateValues(
     data,
     baseCurrency,
@@ -60,8 +61,8 @@ function ComparisonTable({
             </th>
             <th className="align-top">
               <label htmlFor="startDate">Başlangıç</label>
-              <div className="d-flex align-items-center gap-1">
-                <button type="button" onClick={() => incStartDate(-1)}>-</button>
+              <div className="d-flex flex-column align-items-center gap-1">
+                <button type="button" onClick={() => incStartDate(1)}>+</button>
                 <input
                   type="month"
                   id="startDate"
@@ -71,13 +72,13 @@ function ComparisonTable({
                   max="2025-07"
                   step="1"
                 />
-                <button type="button" onClick={() => incStartDate(1)}>+</button>
+                <button type="button" onClick={() => incStartDate(-1)}>-</button>
               </div>
             </th>
             <th className="align-top">
               <label htmlFor="endDate">Bitiş</label>
-              <div className="d-flex align-items-center gap-1">
-                <button type="button" onClick={() => incEndDate(-1)}>-</button>
+              <div className="d-flex flex-column align-items-center gap-1">
+                <button type="button" onClick={() => incEndDate(1)}>+</button>
                 <input
                   type="month"
                   id="endDate"
@@ -87,19 +88,23 @@ function ComparisonTable({
                   max="2025-07"
                   step="1"
                 />
-                <button type="button" onClick={() => incEndDate(1)}>+</button>
+                <button type="button" onClick={() => incEndDate(-1)}>-</button>
               </div>
             </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>₺</td>
+            <td className="icon-cell" onClick={() => setTooltip(tooltip==='try'?null:'try')}>₺
+              {tooltip==='try' && <div className="icon-tooltip">Türk lirası karşılığı</div>}
+            </td>
             <td>{startValues.tryValue.toFixed(2)}</td>
             <td>{endValues.tryValue.toFixed(2)}</td>
           </tr>
           <tr>
-            <td>$</td>
+            <td className="icon-cell" onClick={() => setTooltip(tooltip==='usd'?null:'usd')}>$
+              {tooltip==='usd' && <div className="icon-tooltip">ABD doları karşılığı</div>}
+            </td>
             <td>
               {startValues.usdValue.toFixed(2)} ($: {data.find(d => d.Date === startDate)?.USDTRY})
             </td>
@@ -108,7 +113,9 @@ function ComparisonTable({
             </td>
           </tr>
           <tr>
-            <td>€</td>
+            <td className="icon-cell" onClick={() => setTooltip(tooltip==='eur'?null:'eur')}>€
+              {tooltip==='eur' && <div className="icon-tooltip">Euro karşılığı</div>}
+            </td>
             <td>
               {startValues.eurValue.toFixed(2)} (€: {data.find(d => d.Date === startDate)?.EURTRY})
             </td>
@@ -117,7 +124,9 @@ function ComparisonTable({
             </td>
           </tr>
           <tr>
-            <td>🏅</td>
+            <td className="icon-cell" onClick={() => setTooltip(tooltip==='gold'?null:'gold')}>🏅
+              {tooltip==='gold' && <div className="icon-tooltip">Gram altın karşılığı</div>}
+            </td>
             <td>
               {startValues.goldValue.toFixed(1)} (₺: {data.find(d => d.Date === startDate)?.GoldPerGramTRY})
             </td>
@@ -126,7 +135,9 @@ function ComparisonTable({
             </td>
           </tr>
           <tr>
-            <td>👨🏼‍🔧</td>
+            <td className="icon-cell" onClick={() => setTooltip(tooltip==='wage'?null:'wage')}>👨🏼‍🔧
+              {tooltip==='wage' && <div className="icon-tooltip">Asgari ücret oranı</div>}
+            </td>
             <td>
               {startValues.minWageRatio.toFixed(2)}× (₺: {data.find(d => d.Date === startDate)?.minWageNetTRY})
             </td>
@@ -135,7 +146,10 @@ function ComparisonTable({
             </td>
           </tr>
           <tr>
-            <td>{baseCurrency === "TRY" ? "⊴$⊵" : "⊴₺⊵"}</td>
+            <td className="icon-cell" onClick={() => setTooltip(tooltip==='norm'?null:'norm')}>
+              {baseCurrency === "TRY" ? "⊴$⊵" : "⊴₺⊵"}
+              {tooltip==='norm' && <div className="icon-tooltip">Normalleştirilmiş değer</div>}
+            </td>
             <td>{startValues.normalizedValue.toFixed(2)}</td>
             <td>{endValues.normalizedValue.toFixed(2)}</td>
           </tr>

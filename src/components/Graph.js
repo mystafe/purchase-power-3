@@ -29,6 +29,28 @@ const Graph = ({ data, startDate, endDate }) => {
   if (filtered.length === 0) return null;
 
   const first = filtered[0];
+  const tooltipValue = (item, label) => {
+    switch (label) {
+      case "Enflasyon Endeksi":
+        return getInflation(item);
+      case "Altın Fiyatı (Gram/TRY)":
+        return item.GoldPerGramTRY;
+      case "Altın Fiyatı (Gram/USD)":
+        return item.GoldPerGramTRY / item.USDTRY;
+      case "USD/TRY":
+        return item.USDTRY;
+      case "EUR/TRY":
+        return item.EURTRY;
+      case "Asgari Ücret (TRY)":
+        return item.minWageNetTRY;
+      case "Asgari Ücret (USD)":
+        return item.minWageNetUSD;
+      case "Normalize TRY":
+        return item.USDTRY_TRY_NORM;
+      default:
+        return 0;
+    }
+  };
 
   const getInflation = (item) => item.InflationIndex ?? item.TRYInflationIndex;
 
@@ -108,6 +130,18 @@ const Graph = ({ data, startDate, endDate }) => {
     scales: {
       y: {
         ticks: { callback: (val) => val.toFixed(2) },
+      },
+    },
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const ratio = ctx.parsed.y;
+            const item = filtered[ctx.dataIndex];
+            const actual = tooltipValue(item, ctx.dataset.label);
+            return `${ctx.dataset.label}: ${ratio.toFixed(2)}x (${actual.toFixed(2)})`;
+          },
+        },
       },
     },
   };
