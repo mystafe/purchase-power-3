@@ -26,14 +26,7 @@ function ComparisonTable({
   const [tooltip, setTooltip] = useState(null);
 
   const handleIconClick = (key) => {
-    if (tooltip === key) {
-      setTooltip(null);
-    } else {
-      setTooltip(key);
-      setTimeout(() => {
-        setTooltip((current) => (current === key ? null : current));
-      }, 1500);
-    }
+    setTooltip((current) => (current === key ? null : key));
   };
   const { startValues, endValues } = calculateValues(
     data,
@@ -52,25 +45,30 @@ function ComparisonTable({
       <table className="comparison-table table table-bordered fade-in">
         <thead>
           <tr>
-            <th>
-              <label htmlFor="amount">MİKTAR:</label>
-              <input
-                type="number"
-                id="amount"
-                value={amount}
-                onChange={(e) => setAmount(Number(e.target.value))}
-                min="1"
-              />
-              <label htmlFor="baseCurrency">KUR:</label>
-              <select
-                id="baseCurrency"
-                value={baseCurrency}
-                onChange={(e) => setBaseCurrency(e.target.value)}
-              >
-                <option value="TRY">TRY</option>
-                <option value="USD">USD</option>
-              </select>
+            <th colSpan="3">
+              <div className="d-flex justify-content-center flex-wrap gap-2">
+                <label htmlFor="amount" className="mb-0">MİKTAR:</label>
+                <input
+                  type="number"
+                  id="amount"
+                  value={amount}
+                  onChange={(e) => setAmount(Number(e.target.value))}
+                  min="1"
+                />
+                <label htmlFor="baseCurrency" className="mb-0">KUR:</label>
+                <select
+                  id="baseCurrency"
+                  value={baseCurrency}
+                  onChange={(e) => setBaseCurrency(e.target.value)}
+                >
+                  <option value="TRY">TRY</option>
+                  <option value="USD">USD</option>
+                </select>
+              </div>
             </th>
+          </tr>
+          <tr>
+            <th></th>
             <th className="align-middle">
               <label htmlFor="startDate">Başlangıç</label>
               <div className="d-flex flex-column align-items-center gap-1">
