@@ -58,8 +58,8 @@ function ComparisonTable({
                 <option value="USD">USD</option>
               </select>
             </th>
-            <th>
-              <label htmlFor="startDate">Başlangıç Tarihi:</label>
+            <th className="align-top">
+              <label htmlFor="startDate">Başlangıç</label>
               <div className="d-flex align-items-center gap-1">
                 <button type="button" onClick={() => incStartDate(-1)}>-</button>
                 <input
@@ -74,8 +74,8 @@ function ComparisonTable({
                 <button type="button" onClick={() => incStartDate(1)}>+</button>
               </div>
             </th>
-            <th>
-              <label htmlFor="endDate">Bitiş Tarihi:</label>
+            <th className="align-top">
+              <label htmlFor="endDate">Bitiş</label>
               <div className="d-flex align-items-center gap-1">
                 <button type="button" onClick={() => incEndDate(-1)}>-</button>
                 <input
@@ -94,12 +94,12 @@ function ComparisonTable({
         </thead>
         <tbody>
           <tr>
-            <td>TRY Karşılığı</td>
+            <td>₺</td>
             <td>{startValues.tryValue.toFixed(2)}</td>
             <td>{endValues.tryValue.toFixed(2)}</td>
           </tr>
           <tr>
-            <td>USD Karşılığı</td>
+            <td>$</td>
             <td>
               {startValues.usdValue.toFixed(2)} ($: {data.find(d => d.Date === startDate)?.USDTRY})
             </td>
@@ -108,7 +108,7 @@ function ComparisonTable({
             </td>
           </tr>
           <tr>
-            <td>EUR Karşılığı</td>
+            <td>€</td>
             <td>
               {startValues.eurValue.toFixed(2)} (€: {data.find(d => d.Date === startDate)?.EURTRY})
             </td>
@@ -117,7 +117,7 @@ function ComparisonTable({
             </td>
           </tr>
           <tr>
-            <td>Altın Karşılığı (gram)</td>
+            <td>🏅</td>
             <td>
               {startValues.goldValue.toFixed(1)} (₺: {data.find(d => d.Date === startDate)?.GoldPerGramTRY})
             </td>
@@ -126,7 +126,7 @@ function ComparisonTable({
             </td>
           </tr>
           <tr>
-            <td>Asgari Ücret Karşılığı</td>
+            <td>👨🏼‍🔧</td>
             <td>
               {startValues.minWageRatio.toFixed(2)}× (₺: {data.find(d => d.Date === startDate)?.minWageNetTRY})
             </td>
@@ -135,11 +135,7 @@ function ComparisonTable({
             </td>
           </tr>
           <tr>
-            <td>
-              {baseCurrency === "TRY"
-                ? "Normalize Edilmiş USD Karşılığı"
-                : "Normalize Edilmiş TRY Karşılığı"}
-            </td>
+            <td>{baseCurrency === "TRY" ? "⊴$⊵" : "⊴₺⊵"}</td>
             <td>{startValues.normalizedValue.toFixed(2)}</td>
             <td>{endValues.normalizedValue.toFixed(2)}</td>
           </tr>
