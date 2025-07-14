@@ -99,6 +99,8 @@ function ComparisonTable({
               className="icon-cell"
               onMouseEnter={() => setTooltip('try')}
               onMouseLeave={() => setTooltip(null)}
+              onTouchStart={() => setTooltip('try')}
+              onTouchEnd={() => setTooltip(null)}
             >
               ₺
               {tooltip==='try' && (
@@ -113,6 +115,8 @@ function ComparisonTable({
               className="icon-cell"
               onMouseEnter={() => setTooltip('usd')}
               onMouseLeave={() => setTooltip(null)}
+              onTouchStart={() => setTooltip('usd')}
+              onTouchEnd={() => setTooltip(null)}
             >
               $
               {tooltip==='usd' && (
@@ -131,6 +135,8 @@ function ComparisonTable({
               className="icon-cell"
               onMouseEnter={() => setTooltip('eur')}
               onMouseLeave={() => setTooltip(null)}
+              onTouchStart={() => setTooltip('eur')}
+              onTouchEnd={() => setTooltip(null)}
             >
               €
               {tooltip==='eur' && (
@@ -149,6 +155,8 @@ function ComparisonTable({
               className="icon-cell"
               onMouseEnter={() => setTooltip('gold')}
               onMouseLeave={() => setTooltip(null)}
+              onTouchStart={() => setTooltip('gold')}
+              onTouchEnd={() => setTooltip(null)}
             >
               🏅
               {tooltip==='gold' && (
@@ -167,6 +175,8 @@ function ComparisonTable({
               className="icon-cell"
               onMouseEnter={() => setTooltip('wage')}
               onMouseLeave={() => setTooltip(null)}
+              onTouchStart={() => setTooltip('wage')}
+              onTouchEnd={() => setTooltip(null)}
             >
               👨🏼‍🔧
               {tooltip==='wage' && (
@@ -185,6 +195,8 @@ function ComparisonTable({
               className="icon-cell"
               onMouseEnter={() => setTooltip('norm')}
               onMouseLeave={() => setTooltip(null)}
+              onTouchStart={() => setTooltip('norm')}
+              onTouchEnd={() => setTooltip(null)}
             >
               {baseCurrency === "TRY" ? "⊴$⊵" : "⊴₺⊵"}
               {tooltip==='norm' && (

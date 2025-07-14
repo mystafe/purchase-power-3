@@ -331,20 +331,30 @@ button:active {
 
 .orientation-hint {
   position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
-  padding: 8px 16px;
-  border-radius: 8px;
+  font-size: 1.5rem;
+  text-align: center;
   z-index: 1050;
-  animation: fadeOutHint 0.5s ease 4.5s forwards;
+  animation: fadeOutHint 6s linear forwards;
+}
+
+@media (min-width: 768px) {
+  .orientation-hint {
+    display: none;
+  }
 }
 
 @keyframes fadeOutHint {
+  from {
+    opacity: 0.8;
+  }
   to {
-    opacity: 0;
+    opacity: 0.2;
   }
 }
 
