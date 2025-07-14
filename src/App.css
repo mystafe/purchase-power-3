@@ -84,7 +84,18 @@ body.dark-mode select {
   color: var(--text-dark);
 }
 
+body.dark-mode .filter-bar input,
+body.dark-mode .filter-bar select {
+  background: var(--input-dark);
+  border-color: #444444;
+  color: var(--text-dark);
+}
+
 body.dark-mode .filters label {
+  color: var(--text-dark);
+}
+
+body.dark-mode .filter-bar label {
   color: var(--text-dark);
 }
 
@@ -126,6 +137,19 @@ h1 {
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 1200px;
+}
+
+/* Yeni filtre tasarımı */
+.filter-bar {
+  max-width: 1200px;
+  margin: 20px auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .filter-bar {
+  background: var(--surface-dark);
 }
 
 .filters label {
@@ -290,13 +314,15 @@ button:active {
     padding: 10px;
   }
 
-  .filters {
+  .filters,
+  .filter-bar {
     flex-direction: column;
     align-items: stretch;
     gap: 15px;
   }
 
-  .filters label {
+  .filters label,
+  .filter-bar label {
     margin-bottom: 5px;
   }
 }
