@@ -144,12 +144,15 @@ h1 {
 }
 
 /* Yeni filtre tasarımı */
+
+/* Yeni filtre tasarımı */
 .filter-bar {
   max-width: 1200px;
   margin: 20px auto;
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 body.dark-mode .filter-bar {
@@ -311,6 +314,14 @@ button:active {
     width: 100%;
     overflow-x: auto;
     display: block;
+    margin: 10px 0;
+  }
+
+  .comparison-table th:nth-child(2),
+  .comparison-table th:nth-child(3),
+  .comparison-table td:nth-child(2),
+  .comparison-table td:nth-child(3) {
+    width: 50%;
   }
 
   .comparison-table th,
@@ -327,6 +338,9 @@ button:active {
   .filter-bar {
     flex-wrap: wrap;
     gap: 5px;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .filters label,
@@ -421,6 +435,12 @@ button:active {
   max-width: 90vw;
   text-align: center;
   z-index: 1100;
+}
+
+@media (max-width: 768px) {
+  .icon-tooltip {
+    max-width: calc(100vw - 20px);
+  }
 }
 
 .icon-cell {
