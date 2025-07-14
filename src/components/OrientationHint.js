@@ -12,7 +12,7 @@ const OrientationHint = () => {
 
   return (
     <div className="orientation-hint" onClick={() => setVisible(false)}>
-      Uygulamayı verimli kullanmak için cihazı yan çeviriniz
+      Uygulamayı verimli kullanmak için cihazı yan çeviriniz 🔄
     </div>
   );
 };

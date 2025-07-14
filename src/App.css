@@ -335,7 +335,7 @@ button:active {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.95);
   color: #fff;
   font-size: 1.5rem;
   text-align: center;
@@ -351,7 +351,7 @@ button:active {
 
 @keyframes fadeOutHint {
   from {
-    opacity: 0.8;
+    opacity: 0.95;
   }
   to {
     opacity: 0.2;
@@ -369,6 +369,7 @@ button:active {
   border-radius: 4px;
   font-size: 0.75rem;
   white-space: nowrap;
+  z-index: 1100;
 }
 
 .icon-cell {
