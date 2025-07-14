@@ -12,6 +12,7 @@ function App() {
   const [startDate, setStartDate] = useState("2020-01");
   const [endDate, setEndDate] = useState("2025-07");
   const [amount, setAmount] = useState(100); // Başlangıç miktarı
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const loadData = async () => {
@@ -35,11 +36,24 @@ function App() {
     loadData();
   }, []);
 
+  useEffect(() => {
+    document.body.classList.toggle("dark-mode", darkMode);
+  }, [darkMode]);
+
   return (
-    <div className="container py-4 fade-in">
-      <header className="text-center mb-4 fade-in">
-        <img src={logoUrl} alt="Alim Gucu" style={{ height: "60px" }} />
-        <h1>Para Değeri Karşılaştırma</h1>
+    <div className="container-fluid py-4 px-2 fade-in">
+      <header className="d-flex justify-content-between align-items-center mb-4 fade-in">
+        <div className="d-flex align-items-center gap-2">
+          <img src={logoUrl} alt="Alim Gucu" style={{ height: "60px" }} />
+          <h1 className="mb-0">Para Değeri Karşılaştırma</h1>
+        </div>
+        <button
+          className="btn btn-sm btn-secondary"
+          onClick={() => setDarkMode(!darkMode)}
+          aria-label="tema değiştir"
+        >
+          {darkMode ? "☀️" : "🌙"}
+        </button>
       </header>
       <ComparisonTable
         data={data}

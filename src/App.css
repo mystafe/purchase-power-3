@@ -24,7 +24,7 @@ body {
   );
   color: var(--text-light);
   min-height: 100vh;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   transition: background 0.3s ease;
 }
 
@@ -94,11 +94,54 @@ body {
   }
 }
 
+body.dark-mode {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+body.dark-mode .filters,
+body.dark-mode .comparison-table {
+  background-color: var(--surface-dark);
+  color: var(--text-dark);
+  border-color: #444444;
+}
+
+body.dark-mode .filters input,
+body.dark-mode .filters select,
+body.dark-mode input[type="number"],
+body.dark-mode input[type="month"],
+body.dark-mode select {
+  background: var(--input-dark);
+  border-color: #444444;
+  color: var(--text-dark);
+}
+
+body.dark-mode .filters label {
+  color: var(--text-dark);
+}
+
+body.dark-mode .comparison-table tr:nth-child(even) {
+  background-color: var(--row-dark);
+}
+
+body.dark-mode .comparison-table tr:hover {
+  background-color: var(--hover-dark);
+}
+
+body.dark-mode button {
+  background: #1a73e8;
+  color: #ffffff;
+}
+
+body.dark-mode button:hover {
+  background: #1669c1;
+}
+
 h1 {
   text-align: center;
   margin: 20px 0;
   color: var(--primary-color);
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   font-weight: 600;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
@@ -162,7 +205,7 @@ h1 {
 
 .comparison-table th,
 .comparison-table td {
-  padding: 15px;
+  padding: 10px;
   text-align: center;
   border: none;
 }
@@ -171,7 +214,7 @@ h1 {
   background: var(--primary-color);
   color: #ffffff;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
   position: sticky;
   top: 0;
@@ -197,7 +240,7 @@ h1 {
 }
 
 .comparison-table td {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: #222222;
 }
 
