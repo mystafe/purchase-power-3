@@ -24,7 +24,7 @@ const Graph = ({ data, startDate, endDate }) => {
     usdtry: "rgba(255,159,64,1)",
     eurtry: "rgba(153,102,255,1)",
     wageTRY: "rgba(255,205,86,1)",
-    wageUSD: "rgba(201,203,207,1)",
+    wageUSD: "rgba(0, 200, 83, 1)",
     normTRY: "rgba(75,192,192,0.5)",
   };
 
@@ -120,7 +120,7 @@ const Graph = ({ data, startDate, endDate }) => {
       {
         label: "Asgari Ücret (USD)",
         data: filtered.map((item) => item.minWageNetUSD / first.minWageNetUSD),
-        borderColor: "rgba(201,203,207,1)",
+        borderColor: "rgba(0, 200, 83, 1)",
         fill: false,
         hidden: !visible.wageUSD,
       },
