@@ -188,7 +188,7 @@ body.dark-mode .filter-bar {
 
 /* Tablo */
 .comparison-table {
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   margin: 20px auto;
   border-collapse: separate;
@@ -326,7 +326,7 @@ button:active {
 
   .filter-bar {
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 5px;
   }
 
   .filters label,
@@ -416,7 +416,8 @@ button:active {
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.75rem;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
   max-width: 90vw;
   text-align: center;
   z-index: 1100;
