@@ -62,9 +62,14 @@ body.dark-mode {
   color: var(--text-dark);
 }
 
-body.dark-mode .filters,
-body.dark-mode .comparison-table {
+body.dark-mode .filters {
   background-color: var(--surface-dark);
+  color: var(--text-dark);
+  border-color: #444444;
+}
+
+body.dark-mode .comparison-table {
+  background-color: #333333;
   color: var(--text-dark);
   border-color: #444444;
 }
@@ -162,7 +167,7 @@ h1 {
   border-spacing: 0;
   background: #ffffff;
   border-radius: 12px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
