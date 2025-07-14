@@ -19,10 +19,22 @@ function ComparisonTable({
   setStartDate,
   setEndDate,
   setAmount,
+  superMode,
 }) {
   const incStartDate = (diff) => setStartDate(adjustMonth(startDate, diff));
   const incEndDate = (diff) => setEndDate(adjustMonth(endDate, diff));
   const [tooltip, setTooltip] = useState(null);
+
+  const handleIconClick = (key) => {
+    if (tooltip === key) {
+      setTooltip(null);
+    } else {
+      setTooltip(key);
+      setTimeout(() => {
+        setTooltip((current) => (current === key ? null : current));
+      }, 1500);
+    }
+  };
   const { startValues, endValues } = calculateValues(
     data,
     baseCurrency,
@@ -62,7 +74,9 @@ function ComparisonTable({
             <th className="align-middle">
               <label htmlFor="startDate">Başlangıç</label>
               <div className="d-flex flex-column align-items-center gap-1">
-                <button type="button" onClick={() => incStartDate(1)}>+</button>
+                {superMode && (
+                  <button type="button" onClick={() => incStartDate(1)}>+</button>
+                )}
                 <input
                   type="month"
                   id="startDate"
@@ -72,13 +86,17 @@ function ComparisonTable({
                   max="2025-07"
                   step="1"
                 />
-                <button type="button" onClick={() => incStartDate(-1)}>-</button>
+                {superMode && (
+                  <button type="button" onClick={() => incStartDate(-1)}>-</button>
+                )}
               </div>
             </th>
             <th className="align-middle">
               <label htmlFor="endDate">Bitiş</label>
               <div className="d-flex flex-column align-items-center gap-1">
-                <button type="button" onClick={() => incEndDate(1)}>+</button>
+                {superMode && (
+                  <button type="button" onClick={() => incEndDate(1)}>+</button>
+                )}
                 <input
                   type="month"
                   id="endDate"
@@ -88,7 +106,9 @@ function ComparisonTable({
                   max="2025-07"
                   step="1"
                 />
-                <button type="button" onClick={() => incEndDate(-1)}>-</button>
+                {superMode && (
+                  <button type="button" onClick={() => incEndDate(-1)}>-</button>
+                )}
               </div>
             </th>
           </tr>
@@ -97,11 +117,10 @@ function ComparisonTable({
           <tr>
             <td
               className="icon-cell"
-              onClick={() => setTooltip(tooltip === 'try' ? null : 'try')}
+              onClick={() => handleIconClick('try')}
               onMouseEnter={() => setTooltip('try')}
               onMouseLeave={() => setTooltip(null)}
-              onTouchStart={() => setTooltip('try')}
-              onTouchEnd={() => setTooltip(null)}
+              onTouchStart={() => handleIconClick('try')}
             >
               ₺
               {tooltip==='try' && (
@@ -114,11 +133,10 @@ function ComparisonTable({
           <tr>
             <td
               className="icon-cell"
-              onClick={() => setTooltip(tooltip === 'usd' ? null : 'usd')}
+              onClick={() => handleIconClick('usd')}
               onMouseEnter={() => setTooltip('usd')}
               onMouseLeave={() => setTooltip(null)}
-              onTouchStart={() => setTooltip('usd')}
-              onTouchEnd={() => setTooltip(null)}
+              onTouchStart={() => handleIconClick('usd')}
             >
               $
               {tooltip==='usd' && (
@@ -135,11 +153,10 @@ function ComparisonTable({
           <tr>
             <td
               className="icon-cell"
-              onClick={() => setTooltip(tooltip === 'eur' ? null : 'eur')}
+              onClick={() => handleIconClick('eur')}
               onMouseEnter={() => setTooltip('eur')}
               onMouseLeave={() => setTooltip(null)}
-              onTouchStart={() => setTooltip('eur')}
-              onTouchEnd={() => setTooltip(null)}
+              onTouchStart={() => handleIconClick('eur')}
             >
               €
               {tooltip==='eur' && (
@@ -156,11 +173,10 @@ function ComparisonTable({
           <tr>
             <td
               className="icon-cell"
-              onClick={() => setTooltip(tooltip === 'gold' ? null : 'gold')}
+              onClick={() => handleIconClick('gold')}
               onMouseEnter={() => setTooltip('gold')}
               onMouseLeave={() => setTooltip(null)}
-              onTouchStart={() => setTooltip('gold')}
-              onTouchEnd={() => setTooltip(null)}
+              onTouchStart={() => handleIconClick('gold')}
             >
               🏅
               {tooltip==='gold' && (
@@ -177,11 +193,10 @@ function ComparisonTable({
           <tr>
             <td
               className="icon-cell"
-              onClick={() => setTooltip(tooltip === 'wage' ? null : 'wage')}
+              onClick={() => handleIconClick('wage')}
               onMouseEnter={() => setTooltip('wage')}
               onMouseLeave={() => setTooltip(null)}
-              onTouchStart={() => setTooltip('wage')}
-              onTouchEnd={() => setTooltip(null)}
+              onTouchStart={() => handleIconClick('wage')}
             >
               👨🏼‍🔧
               {tooltip==='wage' && (
@@ -198,11 +213,10 @@ function ComparisonTable({
           <tr>
             <td
               className="icon-cell"
-              onClick={() => setTooltip(tooltip === 'norm' ? null : 'norm')}
+              onClick={() => handleIconClick('norm')}
               onMouseEnter={() => setTooltip('norm')}
               onMouseLeave={() => setTooltip(null)}
-              onTouchStart={() => setTooltip('norm')}
-              onTouchEnd={() => setTooltip(null)}
+              onTouchStart={() => handleIconClick('norm')}
             >
               {baseCurrency === "TRY" ? "⊴$⊵" : "⊴₺⊵"}
               {tooltip==='norm' && (

@@ -13,9 +13,20 @@ function App() {
   const [startDate, setStartDate] = useState("2020-01");
   const [endDate, setEndDate] = useState("2025-07");
   const [amount, setAmount] = useState(100); // Başlangıç miktarı
+  const [superMode, setSuperMode] = useState(false);
+  const [logoClicks, setLogoClicks] = useState(0);
   const [darkMode, setDarkMode] = useState(() =>
     window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
   );
+
+  const handleLogoClick = () => {
+    if (superMode) return;
+    const next = logoClicks + 1;
+    if (next >= 5) {
+      setSuperMode(true);
+    }
+    setLogoClicks(next);
+  };
 
   useEffect(() => {
     const loadData = async () => {
@@ -48,7 +59,12 @@ function App() {
       <OrientationHint />
       <header className="d-flex justify-content-between align-items-center mb-4 fade-in">
         <div className="d-flex align-items-center gap-2">
-          <img src={logoUrl} alt="Alim Gucu" style={{ height: "60px" }} />
+          <img
+            src={logoUrl}
+            alt="Alim Gucu"
+            style={{ height: "60px", cursor: "pointer" }}
+            onClick={handleLogoClick}
+          />
           <h1 className="mb-0">Para Değeri Karşılaştırma</h1>
         </div>
         <button
@@ -69,6 +85,7 @@ function App() {
         setAmount={setAmount}
         setStartDate={setStartDate}
         setEndDate={setEndDate}
+        superMode={superMode}
       />
       <Graph data={data} startDate={startDate} endDate={endDate} />
       <footer className="text-center mt-4">
