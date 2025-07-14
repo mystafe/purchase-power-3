@@ -12,6 +12,7 @@ function FilterControls({
   incStartDate,
   incEndDate,
   superMode,
+  
 }) {
   return (
     <form className="row row-cols-2 row-cols-md-auto g-3 p-3 rounded shadow-sm align-items-end filter-bar">
