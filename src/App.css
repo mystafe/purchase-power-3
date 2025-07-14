@@ -334,32 +334,39 @@ button:active {
   }
 }
 
-.orientation-hint {
+
+.orientation-hint-overlay {
   position: fixed;
   inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.95);
-  color: #fff;
-  font-size: 1.5rem;
-  text-align: center;
+  background: rgba(0, 0, 0, 0.2);
   z-index: 1050;
-  animation: fadeOutHint 6s linear forwards;
+  animation: fadeOutHint 5s linear forwards;
+}
+
+.orientation-hint {
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
-  .orientation-hint {
+  .orientation-hint-overlay {
     display: none;
   }
 }
 
 @keyframes fadeOutHint {
   from {
-    opacity: 0.95;
+    opacity: 1;
   }
   to {
-    opacity: 0.2;
+    opacity: 0;
   }
 }
 
