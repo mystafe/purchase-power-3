@@ -17,6 +17,17 @@ const Graph = ({ data, startDate, endDate }) => {
     normTRY: false,
   });
 
+  const labelColors = {
+    inflation: "rgba(75,192,192,1)",
+    goldTRY: "rgba(255,99,132,1)",
+    goldUSD: "rgba(54,162,235,1)",
+    usdtry: "rgba(255,159,64,1)",
+    eurtry: "rgba(153,102,255,1)",
+    wageTRY: "rgba(255,205,86,1)",
+    wageUSD: "rgba(201,203,207,1)",
+    normTRY: "rgba(75,192,192,0.5)",
+  };
+
   if (!data || data.length === 0) return null;
 
   const filtered = data.filter((item) => {
@@ -151,7 +162,7 @@ const Graph = ({ data, startDate, endDate }) => {
     <div className="fade-in">
       <h3>Enflasyon ve Finansal Göstergeler</h3>
       <div className="chart-controls mb-2">
-        <label>
+        <label style={{ color: labelColors.inflation }}>
           <input
             type="checkbox"
             checked={visible.inflation}
@@ -161,7 +172,7 @@ const Graph = ({ data, startDate, endDate }) => {
           />
           Enflasyon Endeksi
         </label>
-        <label>
+        <label style={{ color: labelColors.usdtry }}>
           <input
             type="checkbox"
             checked={visible.usdtry}
@@ -171,7 +182,7 @@ const Graph = ({ data, startDate, endDate }) => {
           />
           USD/TRY
         </label>
-        <label>
+        <label style={{ color: labelColors.goldTRY }}>
           <input
             type="checkbox"
             checked={visible.goldTRY}
@@ -181,7 +192,7 @@ const Graph = ({ data, startDate, endDate }) => {
           />
           Altın (TRY)
         </label>
-        <label>
+        <label style={{ color: labelColors.goldUSD }}>
           <input
             type="checkbox"
             checked={visible.goldUSD}
@@ -191,7 +202,7 @@ const Graph = ({ data, startDate, endDate }) => {
           />
           Altın (USD)
         </label>
-        <label>
+        <label style={{ color: labelColors.eurtry }}>
           <input
             type="checkbox"
             checked={visible.eurtry}
@@ -201,7 +212,7 @@ const Graph = ({ data, startDate, endDate }) => {
           />
           EUR/TRY
         </label>
-        <label>
+        <label style={{ color: labelColors.wageTRY }}>
           <input
             type="checkbox"
             checked={visible.wageTRY}
@@ -211,7 +222,7 @@ const Graph = ({ data, startDate, endDate }) => {
           />
           Asgari Ücret (TRY)
         </label>
-        <label>
+        <label style={{ color: labelColors.wageUSD }}>
           <input
             type="checkbox"
             checked={visible.wageUSD}
@@ -221,7 +232,7 @@ const Graph = ({ data, startDate, endDate }) => {
           />
           Asgari Ücret (USD)
         </label>
-        <label>
+        <label style={{ color: labelColors.normTRY }}>
           <input
             type="checkbox"
             checked={visible.normTRY}

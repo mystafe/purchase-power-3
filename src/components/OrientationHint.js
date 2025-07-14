@@ -4,7 +4,7 @@ const OrientationHint = () => {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(false), 5000);
+    const timer = setTimeout(() => setVisible(false), 6000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -12,7 +12,7 @@ const OrientationHint = () => {
 
   return (
     <div className="orientation-hint" onClick={() => setVisible(false)}>
-      Uygulamayı verimli kullanmak için telefonu yan çeviriniz
+      Uygulamayı verimli kullanmak için cihazı yan çeviriniz
     </div>
   );
 };
