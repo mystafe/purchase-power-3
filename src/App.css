@@ -259,7 +259,7 @@ select {
   border: 1px solid #e0e0e0;
   border-radius: 6px;
   font-size: 0.95rem;
-  width: 90%;
+  width: 100%;
   box-sizing: border-box;
   background: #f9f9f9;
   color: #222222;
@@ -422,17 +422,17 @@ button:active {
 
 .icon-tooltip {
   position: absolute;
-  bottom: -1.8em;
+  bottom: -2.2em;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.75);
   color: #fff;
-  padding: 2px 6px;
+  padding: 4px 8px;
   border-radius: 4px;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   white-space: normal;
   word-break: break-word;
-  max-width: 90vw;
+  max-width: 95vw;
   text-align: center;
   z-index: 1100;
 }
