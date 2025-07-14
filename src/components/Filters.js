@@ -12,7 +12,7 @@ function Filters({
 }) {
   return (
     <div className="filters">
-      <label htmlFor="baseCurrency">Baz Para Birimi:</label>
+      <label htmlFor="baseCurrency">KUR:</label>
       <select
         id="baseCurrency"
         value={baseCurrency}
@@ -38,7 +38,7 @@ function Filters({
         onChange={(e) => setEndDate(e.target.value)}
       />
 
-      <label htmlFor="amount">Başlangıç Miktarı:</label>
+      <label htmlFor="amount">MİKTAR:</label>
       <input
         type="number"
         id="amount"

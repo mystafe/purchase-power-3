@@ -133,6 +133,7 @@ const Graph = ({ data, startDate, endDate }) => {
       },
     },
     plugins: {
+      legend: { display: false },
       tooltip: {
         callbacks: {
           label: (ctx) => {

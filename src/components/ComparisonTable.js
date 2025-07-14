@@ -41,7 +41,7 @@ function ComparisonTable({
         <thead>
           <tr>
             <th>
-              <label htmlFor="amount">Başlangıç Miktarı:</label>
+              <label htmlFor="amount">MİKTAR:</label>
               <input
                 type="number"
                 id="amount"
@@ -49,7 +49,7 @@ function ComparisonTable({
                 onChange={(e) => setAmount(Number(e.target.value))}
                 min="1"
               />
-              <label htmlFor="baseCurrency">Baz Para Birimi:</label>
+              <label htmlFor="baseCurrency">KUR:</label>
               <select
                 id="baseCurrency"
                 value={baseCurrency}
@@ -59,7 +59,7 @@ function ComparisonTable({
                 <option value="USD">USD</option>
               </select>
             </th>
-            <th className="align-top">
+            <th className="align-middle">
               <label htmlFor="startDate">Başlangıç</label>
               <div className="d-flex flex-column align-items-center gap-1">
                 <button type="button" onClick={() => incStartDate(1)}>+</button>
@@ -75,7 +75,7 @@ function ComparisonTable({
                 <button type="button" onClick={() => incStartDate(-1)}>-</button>
               </div>
             </th>
-            <th className="align-top">
+            <th className="align-middle">
               <label htmlFor="endDate">Bitiş</label>
               <div className="d-flex flex-column align-items-center gap-1">
                 <button type="button" onClick={() => incEndDate(1)}>+</button>
@@ -95,15 +95,29 @@ function ComparisonTable({
         </thead>
         <tbody>
           <tr>
-            <td className="icon-cell" onClick={() => setTooltip(tooltip==='try'?null:'try')}>₺
-              {tooltip==='try' && <div className="icon-tooltip">Türk lirası karşılığı</div>}
+            <td
+              className="icon-cell"
+              onMouseEnter={() => setTooltip('try')}
+              onMouseLeave={() => setTooltip(null)}
+            >
+              ₺
+              {tooltip==='try' && (
+                <div className="icon-tooltip">Türk lirası karşılığı</div>
+              )}
             </td>
             <td>{startValues.tryValue.toFixed(2)}</td>
             <td>{endValues.tryValue.toFixed(2)}</td>
           </tr>
           <tr>
-            <td className="icon-cell" onClick={() => setTooltip(tooltip==='usd'?null:'usd')}>$
-              {tooltip==='usd' && <div className="icon-tooltip">ABD doları karşılığı</div>}
+            <td
+              className="icon-cell"
+              onMouseEnter={() => setTooltip('usd')}
+              onMouseLeave={() => setTooltip(null)}
+            >
+              $
+              {tooltip==='usd' && (
+                <div className="icon-tooltip">ABD doları karşılığı</div>
+              )}
             </td>
             <td>
               {startValues.usdValue.toFixed(2)} ($: {data.find(d => d.Date === startDate)?.USDTRY})
@@ -113,8 +127,15 @@ function ComparisonTable({
             </td>
           </tr>
           <tr>
-            <td className="icon-cell" onClick={() => setTooltip(tooltip==='eur'?null:'eur')}>€
-              {tooltip==='eur' && <div className="icon-tooltip">Euro karşılığı</div>}
+            <td
+              className="icon-cell"
+              onMouseEnter={() => setTooltip('eur')}
+              onMouseLeave={() => setTooltip(null)}
+            >
+              €
+              {tooltip==='eur' && (
+                <div className="icon-tooltip">Euro karşılığı</div>
+              )}
             </td>
             <td>
               {startValues.eurValue.toFixed(2)} (€: {data.find(d => d.Date === startDate)?.EURTRY})
@@ -124,8 +145,15 @@ function ComparisonTable({
             </td>
           </tr>
           <tr>
-            <td className="icon-cell" onClick={() => setTooltip(tooltip==='gold'?null:'gold')}>🏅
-              {tooltip==='gold' && <div className="icon-tooltip">Gram altın karşılığı</div>}
+            <td
+              className="icon-cell"
+              onMouseEnter={() => setTooltip('gold')}
+              onMouseLeave={() => setTooltip(null)}
+            >
+              🏅
+              {tooltip==='gold' && (
+                <div className="icon-tooltip">Gram altın karşılığı</div>
+              )}
             </td>
             <td>
               {startValues.goldValue.toFixed(1)} (₺: {data.find(d => d.Date === startDate)?.GoldPerGramTRY})
@@ -135,8 +163,15 @@ function ComparisonTable({
             </td>
           </tr>
           <tr>
-            <td className="icon-cell" onClick={() => setTooltip(tooltip==='wage'?null:'wage')}>👨🏼‍🔧
-              {tooltip==='wage' && <div className="icon-tooltip">Asgari ücret oranı</div>}
+            <td
+              className="icon-cell"
+              onMouseEnter={() => setTooltip('wage')}
+              onMouseLeave={() => setTooltip(null)}
+            >
+              👨🏼‍🔧
+              {tooltip==='wage' && (
+                <div className="icon-tooltip">Asgari ücret oranı</div>
+              )}
             </td>
             <td>
               {startValues.minWageRatio.toFixed(2)}× (₺: {data.find(d => d.Date === startDate)?.minWageNetTRY})
@@ -146,9 +181,15 @@ function ComparisonTable({
             </td>
           </tr>
           <tr>
-            <td className="icon-cell" onClick={() => setTooltip(tooltip==='norm'?null:'norm')}>
+            <td
+              className="icon-cell"
+              onMouseEnter={() => setTooltip('norm')}
+              onMouseLeave={() => setTooltip(null)}
+            >
               {baseCurrency === "TRY" ? "⊴$⊵" : "⊴₺⊵"}
-              {tooltip==='norm' && <div className="icon-tooltip">Normalleştirilmiş değer</div>}
+              {tooltip==='norm' && (
+                <div className="icon-tooltip">Normalleştirilmiş değer</div>
+              )}
             </td>
             <td>{startValues.normalizedValue.toFixed(2)}</td>
             <td>{endValues.normalizedValue.toFixed(2)}</td>
