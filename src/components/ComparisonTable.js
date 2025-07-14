@@ -56,6 +56,7 @@ function ComparisonTable({
         incEndDate={incEndDate}
         superMode={superMode}
       />
+      <div className="table-responsive">
       <table className="comparison-table table table-hover table-bordered text-center fade-in">
         <thead className="table-primary">
           <tr>
@@ -180,6 +181,7 @@ function ComparisonTable({
         </tbody>
 
       </table>
+      </div>
     </>
   );
 }

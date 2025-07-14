@@ -14,8 +14,8 @@ function FilterControls({
   superMode,
 }) {
   return (
-    <form className="row g-3 bg-light p-3 rounded shadow-sm align-items-end filter-bar">
-      <div className="col-6 col-md-2">
+    <form className="row g-3 p-3 rounded shadow-sm align-items-end filter-bar">
+      <div className="col-12 col-md-2">
         <label htmlFor="amount" className="form-label">Miktar</label>
         <input
           type="number"
@@ -26,7 +26,7 @@ function FilterControls({
           onChange={(e) => setAmount(Number(e.target.value))}
         />
       </div>
-      <div className="col-6 col-md-2">
+      <div className="col-12 col-md-2">
         <label htmlFor="baseCurrency" className="form-label">Kur</label>
         <select
           id="baseCurrency"
