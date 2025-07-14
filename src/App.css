@@ -417,6 +417,8 @@ button:active {
   border-radius: 4px;
   font-size: 0.75rem;
   white-space: nowrap;
+  max-width: 90vw;
+  text-align: center;
   z-index: 1100;
 }
 
