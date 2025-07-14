@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import ComparisonTable from "./components/ComparisonTable";
 import Graph from "./components/Graph";
+import OrientationHint from "./components/OrientationHint";
 import packageJson from "../package.json";
 
 const logoUrl = "/logo.svg";
@@ -12,7 +13,9 @@ function App() {
   const [startDate, setStartDate] = useState("2020-01");
   const [endDate, setEndDate] = useState("2025-07");
   const [amount, setAmount] = useState(100); // Başlangıç miktarı
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() =>
+    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  );
 
   useEffect(() => {
     const loadData = async () => {
@@ -42,6 +45,7 @@ function App() {
 
   return (
     <div className="container-fluid py-4 px-2 fade-in">
+      <OrientationHint />
       <header className="d-flex justify-content-between align-items-center mb-4 fade-in">
         <div className="d-flex align-items-center gap-2">
           <img src={logoUrl} alt="Alim Gucu" style={{ height: "60px" }} />
